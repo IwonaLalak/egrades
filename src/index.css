@@ -9,3 +9,4 @@ body {
 }
 
 @import 'styles/LoginModule.css';
+@import "styles/NavigationComponent.css";

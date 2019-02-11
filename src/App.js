@@ -17,7 +17,7 @@ class App extends Component {
 
         // todo for now
 
-        let localStorageUser = {id: 1, name: 'Jon X', type: null}
+        let localStorageUser = {id: 1, name: 'Jon X', type: 'ADMIN'}
         if (!Boolean(localStorageUser)) {
             return false
         }

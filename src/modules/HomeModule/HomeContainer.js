@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NavigationComponent from "../../app_components/complex/navigationComponent/NavigationComponent";
 
 export default class HomeContainer extends Component {
     constructor(props) {
@@ -11,9 +12,11 @@ export default class HomeContainer extends Component {
     render() {
 
         return (
-           <div>
-                home container
-           </div>
+                <NavigationComponent links={[]}>
+                    <div>
+                        home compontent
+                    </div>
+                </NavigationComponent>
     );
     }
 }
