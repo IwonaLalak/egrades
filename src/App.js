@@ -1,28 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Link, Redirect, Route, Switch, withRouter} from 'react-router-dom';
+import LoginContainer from "./modules/LoginModule/LoginContainer";
+import HomeContainer from "./modules/HomeModule/HomeContainer";
+import accessConfig from "./app_access/accessConfig";
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+
+    checkIfUserHasPermission(module) {
+        // users: admin, teacher, student
+
+        // todo for now
+
+        let localStorageUser = {id: 1, name: 'Jon X', type: 'ADMIN'}
+        if (!Boolean(localStorageUser)) {
+            return false
+        }
+        else {
+            return (accessConfig.checkAccess(localStorageUser.type).indexOf(module) > -1)
+        }
+
+
+    }
+
+
+    render() {
+        return (
+            <div>
+                <Router>
+                    <Switch>
+                        <Route exact path="/" render={(props) => this.checkIfUserHasPermission('HOME') ?
+                            <HomeContainer  {...props}  /> : <LoginContainer  {...props}/>}/>
+
+                        <Redirect to="/"/>
+                    </Switch>
+                </Router>
+            </div>
+        );
+    }
 }
 
 export default App;
