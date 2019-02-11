@@ -1,0 +1,27 @@
+#LoginContainer {
+  min-height: 100vh;
+  background: #0a5884;
+}
+#LoginContainer #LoginFormContainer {
+  width: 500px;
+  margin: 15vh auto 0;
+}
+#LoginContainer #LoginFormContainer:first-child {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 15px 30px;
+  border-radius: 5px;
+}
+#LoginContainer #LoginFormContainer h1 {
+  margin-top: 15px;
+  text-align: center;
+}
+#LoginContainer #LoginFormContainer h1 small {
+  margin-left: 5px;
+  font-size: 50%;
+  color: grey;
+}
+#LoginContainer #LoginFormContainer #buttonContainer {
+  text-align: center;
+}
+/*# sourceMappingURL=LoginModule.css.map */

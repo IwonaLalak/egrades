@@ -1,0 +1,31 @@
+@import "general";
+
+#LoginContainer{
+  min-height:100vh;
+  background: @primary-color;
+
+  #LoginFormContainer{
+    width:500px;
+    margin: 15vh auto 0;
+    &:first-child{
+      background: #fff;
+      border:1px solid rgba(0, 0, 0, 0.5);
+      padding: 15px 30px;
+      border-radius: 5px;
+    }
+
+    h1{
+      margin-top: 15px;
+      text-align: center;
+      small{
+        margin-left: 5px;
+        font-size: 50%;
+        color:grey
+      }
+    }
+
+    #buttonContainer{
+      text-align: center;
+    }
+  }
+}
