@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button} from 'reactstrap'
+import {Button, ButtonToolbar} from 'reactstrap'
 
 export const CustomButton = (props) => {
     return (
@@ -271,4 +271,49 @@ ButtonAction.defaultProps = {
     outline:false,
     size:'md', // sm, md, lg
     color:'warning'
+};
+
+export const ButtonToolbarCancelSave = (props) => {
+    return (
+        <ButtonToolbar>
+            <Button
+                onClick={props.onClickCancel}
+                size={props.size}
+                color={'default'}
+                title={props.title}
+                style={props.style}
+                {...props}
+            >
+                <i className={'fa fa-times'} style={{marginRight:'5px'}}></i> Cancel
+            </Button>
+            <Button
+                onClick={props.onClickSave}
+                size={props.size}
+                color={'primary'}
+                title={props.title}
+                style={props.style}
+                disabled={props.disabledSave}
+                {...props}
+            >
+                <i className={'fa fa-save'} style={{marginRight:'5px'}}></i> Save
+            </Button>
+        </ButtonToolbar>
+    );
+};
+
+ButtonToolbarCancelSave.propTypes = {
+    onClickCancel: PropTypes.func.isRequired,
+    onClickSave: PropTypes.func.isRequired,
+    size:PropTypes.string,
+    style: PropTypes.object,
+    title: PropTypes.string,
+    disabledSave: PropTypes.bool,
+    outline:PropTypes.bool,
+
+};
+
+ButtonToolbarCancelSave.defaultProps = {
+    disabledSave:false,
+    outline:false,
+    size:'md', // sm, md, lg
 };

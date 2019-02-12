@@ -1,24 +1,75 @@
 @import "general";
 
-
-.btn-primary, .btn-primary:disabled{
+.btn-primary, .btn-primary:disabled {
   background: @primary-color;
   border-color: @primary-color-darker
 }
-.btn-primary:hover{
+
+.btn-primary:hover {
   background: @primary-color-darker;
   border-color: @primary-color-darkest
 }
-.btn-default, .btn-default:disabled{
+
+.btn-default, .btn-default:disabled {
   border-color: #ccc
 }
-.btn-default:hover{
+
+.btn-default:hover {
   background: #ddd;
   border-color: #aaa
 }
-.btn-warning, .btn-warning:disabled{
+
+.btn-warning, .btn-warning:disabled {
   color: #fff;
 }
-.btn-warning:hover{
+
+.btn-warning:hover,.btn-outline-warning:hover {
   color: #fff;
+}
+
+.btn-toolbar{
+  .btn{
+    margin-right:5px;
+    &:last-of-type{
+      margin-right:0
+    }
+  }
+}
+
+.react-bs-table-container {
+  margin-top:15px;
+  table {
+    margin-bottom: 0
+  }
+}
+
+form{
+  border:1px solid @primary-color;
+  border-radius: 5px;
+  padding:15px;
+  margin-top:15px;
+  h6{
+    top:0;
+    //margin-bottom:15px;
+    position:absolute;
+    display:inline-block;
+    background: @primary-color;
+    border:1px solid @primary-color;
+    border-radius: 3px;
+    padding:5px;
+    color:#fff;
+    font-weight: bold;
+    font-size:12px
+
+  }
+  .form-group:first-of-type{
+    margin-top:5px;
+    label{
+      font-weight: bold;
+    }
+  }
+
+  .add-label-margin{
+    height:32px
+  }
 }

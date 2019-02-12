@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ButtonToolbar} from "reactstrap";
-import {ButtonDelete, ButtonEdit} from "../../../app_components/ButtonsComponents";
+import {ButtonAction, ButtonDelete, ButtonEdit} from "../../../app_components/ButtonsComponents";
 import tabgrid from "../../../app_utilities/for_components/tabgrid";
 import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table";
 
@@ -15,8 +15,9 @@ export default class ClassesTable extends Component {
     renderButtons(cell,row){
         return(
             <ButtonToolbar>
-                <ButtonEdit onClick={()=>{}} size={'sm'}/>
-                <ButtonDelete onClick={()=>{}} size={'sm'}/>
+                <ButtonEdit outline={true} onClick={()=>{this.props.handleClickEdit(row)}} size={'sm'}/>
+                <ButtonDelete outline={true} onClick={()=>{this.props.handleClickDelete(row)}} size={'sm'}/>
+                <ButtonAction outline={true} onClick={()=>{this.props.handleClickDelete(row)}} size={'sm'} label={'akcja'}/>
             </ButtonToolbar>
         )
     }
@@ -35,17 +36,17 @@ export default class ClassesTable extends Component {
                                                    thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Name</TableHeaderColumn>
-                                <TableHeaderColumn dataField='number'
+                                <TableHeaderColumn dataField='profile'
                                                    thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
-                                >Number</TableHeaderColumn>
+                                >Profile</TableHeaderColumn>
                                 <TableHeaderColumn dataField='startYear'
                                                    thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Start year</TableHeaderColumn>
                                 <TableHeaderColumn dataField='idCl'
                                                    thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
-                                                   dataFormat={(cell,row)=>{this.renderButtons(cell,row)}}
+                                                   dataFormat={(cell,row)=>this.renderButtons(cell,row)}
                                 ></TableHeaderColumn>
 
                             </BootstrapTable>

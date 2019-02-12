@@ -19,7 +19,47 @@
 .btn-warning:disabled {
   color: #fff;
 }
-.btn-warning:hover {
+.btn-warning:hover,
+.btn-outline-warning:hover {
   color: #fff;
+}
+.btn-toolbar .btn {
+  margin-right: 5px;
+}
+.btn-toolbar .btn:last-of-type {
+  margin-right: 0;
+}
+.react-bs-table-container {
+  margin-top: 15px;
+}
+.react-bs-table-container table {
+  margin-bottom: 0;
+}
+form {
+  border: 1px solid #0a5884;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 15px;
+}
+form h6 {
+  top: 0;
+  position: absolute;
+  display: inline-block;
+  background: #0a5884;
+  border: 1px solid #0a5884;
+  border-radius: 3px;
+  padding: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+}
+form .form-group:first-of-type {
+  margin-top: 5px;
+}
+form .form-group:first-of-type label {
+  font-weight: bold;
+}
+form .add-label-margin {
+  height: 32px;
 }
 /*# sourceMappingURL=elements.css.map */
