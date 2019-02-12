@@ -33,5 +33,5 @@ export default class NavigationComponent extends Component {
 }
 
 NavigationComponent.propTypes = {
-    links: PropTypes.object.isRequired,
+   // links: PropTypes.object.isRequired,
 }

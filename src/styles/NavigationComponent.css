@@ -4,12 +4,15 @@
   padding: 5px 10px;
 }
 #NavigationComponent #header #appName {
+  margin-left: 5px;
   float: left;
   font-weight: bold;
   font-size: 20px;
+  color: #444;
 }
 #NavigationComponent #header #appName small {
   margin-left: 5px;
+  color: #888;
 }
 #NavigationComponent #header #logoutButton {
   float: right;
@@ -21,15 +24,28 @@
   height: 100vh;
 }
 #NavigationComponent #container #sidebar ul {
-  margin: 0;
   padding: 0;
+  margin: 15px 0 0;
 }
 #NavigationComponent #container #sidebar ul li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 5px;
+  margin: 5px;
 }
 #NavigationComponent #container #sidebar ul li:last-of-type {
   border: none;
+}
+#NavigationComponent #container #sidebar ul li a {
+  padding: 5px 10px;
+  display: inline-block;
+  font-size: 18px;
+  color: #eee;
+}
+#NavigationComponent #container #sidebar ul li a .fa {
+  width: 25px;
+  text-align: center;
+}
+#NavigationComponent #container #sidebar ul li a:hover {
+  color: #fff;
 }
 #NavigationComponent #container #content {
   padding: 15px 15px 15px 215px;
