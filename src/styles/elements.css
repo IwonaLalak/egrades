@@ -29,6 +29,13 @@
 .btn-toolbar .btn:last-of-type {
   margin-right: 0;
 }
+.badge-default {
+  background: #555;
+  color: #fff;
+}
+.badge-secondary {
+  background: #ff624e;
+}
 .react-bs-table-container {
   margin-top: 15px;
 }

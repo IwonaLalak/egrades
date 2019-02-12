@@ -28,6 +28,13 @@ export default class ClassesContainer extends Component {
                 profile: 'Math and IT',
                 startYear: 2018,
 
+            },
+            {
+                idCl: 2,
+                name: '1B',
+                profile: 'Biology and Chemistry',
+                startYear: 2018,
+
             }
         ]
         this.setState({data: arr})
