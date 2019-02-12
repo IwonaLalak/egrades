@@ -7,4 +7,19 @@
   background: #09466b;
   border-color: #073c5a;
 }
+.btn-default,
+.btn-default:disabled {
+  border-color: #ccc;
+}
+.btn-default:hover {
+  background: #ddd;
+  border-color: #aaa;
+}
+.btn-warning,
+.btn-warning:disabled {
+  color: #fff;
+}
+.btn-warning:hover {
+  color: #fff;
+}
 /*# sourceMappingURL=elements.css.map */
