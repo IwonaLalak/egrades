@@ -24,4 +24,13 @@
 #LoginContainer #LoginFormContainer #buttonContainer {
   text-align: center;
 }
+#LoginContainer #LoginFormContainer #buttonContainer .btn-primary,
+#LoginContainer #LoginFormContainer #buttonContainer .btn-primary:disabled {
+  background: #ff624e;
+  border-color: #e6634f;
+}
+#LoginContainer #LoginFormContainer #buttonContainer .btn-primary:hover {
+  background: #e6634f;
+  border-color: #cd4b3c;
+}
 /*# sourceMappingURL=LoginModule.css.map */

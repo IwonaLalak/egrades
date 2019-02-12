@@ -18,7 +18,7 @@
   float: right;
 }
 #NavigationComponent #container #sidebar {
-  background: #0a5884;
+  background: #073c5a;
   width: 200px;
   float: left;
   height: 100vh;
@@ -28,7 +28,7 @@
   margin: 15px 0 0;
 }
 #NavigationComponent #container #sidebar ul li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin: 5px;
 }
 #NavigationComponent #container #sidebar ul li:last-of-type {
@@ -38,14 +38,14 @@
   padding: 5px 10px;
   display: inline-block;
   font-size: 18px;
-  color: #eee;
+  color: #fff;
 }
 #NavigationComponent #container #sidebar ul li a .fa {
   width: 25px;
   text-align: center;
 }
 #NavigationComponent #container #sidebar ul li a:hover {
-  color: #fff;
+  color: #ff7365;
 }
 #NavigationComponent #container #content {
   padding: 15px 15px 15px 215px;

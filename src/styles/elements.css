@@ -1,0 +1,10 @@
+.btn-primary,
+.btn-primary:disabled {
+  background: #0a5884;
+  border-color: #09466b;
+}
+.btn-primary:hover {
+  background: #09466b;
+  border-color: #073c5a;
+}
+/*# sourceMappingURL=elements.css.map */

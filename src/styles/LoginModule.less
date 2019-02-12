@@ -26,6 +26,14 @@
 
     #buttonContainer{
       text-align: center;
+      .btn-primary, .btn-primary:disabled{
+        background: @secondary-color;
+        border-color: @secondary-color-darker
+      }
+      .btn-primary:hover{
+        background: @secondary-color-darker;
+        border-color: @secondary-color-darkest
+      }
     }
   }
 }
