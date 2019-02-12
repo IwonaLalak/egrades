@@ -52,6 +52,12 @@ export default class ClassesContainer extends Component {
         this.setState({showForm: false, editedObject: null})
     }
 
+    onClickShowStudents(obj){
+
+
+
+    }
+
     render() {
 
         return (
@@ -78,6 +84,7 @@ export default class ClassesContainer extends Component {
                             <ClassesTable data={this.state.data}
                                           handleClickEdit={(obj) => this.onClickEdit(obj)}
                                           handleClickDelete={(obj) => this.onClickDelete(obj)}
+                                          handleClickShowStudents={(obj) => this.onClickShowStudents(obj)}
 
                             />
                         </Col>

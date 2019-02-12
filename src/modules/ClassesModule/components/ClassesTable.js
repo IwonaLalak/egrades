@@ -15,9 +15,9 @@ export default class ClassesTable extends Component {
     renderButtons(cell,row){
         return(
             <ButtonToolbar>
+                <ButtonAction outline={true} onClick={()=>{this.props.handleClickShowStudents(row)}} size={'sm'} label={'Show students'}/>
                 <ButtonEdit outline={true} onClick={()=>{this.props.handleClickEdit(row)}} size={'sm'}/>
                 <ButtonDelete outline={true} onClick={()=>{this.props.handleClickDelete(row)}} size={'sm'}/>
-                <ButtonAction outline={true} onClick={()=>{this.props.handleClickDelete(row)}} size={'sm'} label={'akcja'}/>
             </ButtonToolbar>
         )
     }
@@ -33,7 +33,7 @@ export default class ClassesTable extends Component {
                             >
                                 <TableHeaderColumn dataField='idCl' isKey hidden={true}>ID</TableHeaderColumn>
                                 <TableHeaderColumn dataField='name'
-                                                   thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
+                                                   thStyle={tabgrid.tg7} tdStyle={tabgrid.tg7}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Name</TableHeaderColumn>
                                 <TableHeaderColumn dataField='profile'
@@ -41,7 +41,7 @@ export default class ClassesTable extends Component {
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Profile</TableHeaderColumn>
                                 <TableHeaderColumn dataField='startYear'
-                                                   thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
+                                                   thStyle={tabgrid.tg8} tdStyle={tabgrid.tg8}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Start year</TableHeaderColumn>
                                 <TableHeaderColumn dataField='idCl'
