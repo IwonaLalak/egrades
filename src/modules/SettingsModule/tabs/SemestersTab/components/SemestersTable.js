@@ -3,6 +3,7 @@ import {ButtonToolbar} from "reactstrap";
 import {ButtonAction, ButtonDelete, ButtonEdit} from "../../../../../app_components/ButtonsComponents";
 import tabgrid from "../../../../../app_utilities/for_components/tabgrid";
 import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table";
+import {Icon} from "../../../../../app_components/IconComponent";
 
 export default class SemestersTable extends Component {
     constructor(props) {
@@ -20,7 +21,15 @@ export default class SemestersTable extends Component {
             </ButtonToolbar>
         )
     }
-    
+
+    renderIsCurrent(cell,row){
+        if(cell){
+            return <span><Icon type={'check'} style={{color:'forestgreen'}}/>yes</span>
+        }else{
+            return <span><Icon type={'times'} style={{color:'grey'}}/>no</span>
+        }
+    }
+
     render() {
 
         return (
@@ -32,20 +41,21 @@ export default class SemestersTable extends Component {
                             >
                                 <TableHeaderColumn dataField='idSe' isKey hidden={true}>ID</TableHeaderColumn>
                                 <TableHeaderColumn dataField='name'
-                                                   thStyle={tabgrid.tg13} tdStyle={tabgrid.tg13}
+                                                   thStyle={tabgrid.tg13} tdStyle={tabgrid.tg13} dataSort
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Semestr name</TableHeaderColumn>
-                                <TableHeaderColumn dataField='dateSince'
+                                <TableHeaderColumn dataField='dateSince' dataSort
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Date sinse</TableHeaderColumn>
-                                <TableHeaderColumn dataField='dateTo'
+                                <TableHeaderColumn dataField='dateTo' dataSort
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Date to</TableHeaderColumn>
-                                <TableHeaderColumn dataField='isCurrent'
+                                <TableHeaderColumn dataField='isCurrent' dataSort
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
+                                                   dataFormat={this.renderIsCurrent}
                                 >Is current?</TableHeaderColumn>
                                 <TableHeaderColumn dataField='idSe'
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}

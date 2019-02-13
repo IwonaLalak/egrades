@@ -32,15 +32,15 @@ export default class ClassesTable extends Component {
                                             hover
                             >
                                 <TableHeaderColumn dataField='idCl' isKey hidden={true}>ID</TableHeaderColumn>
-                                <TableHeaderColumn dataField='name'
+                                <TableHeaderColumn dataField='name' dataSort
                                                    thStyle={tabgrid.tg7} tdStyle={tabgrid.tg7}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Name</TableHeaderColumn>
-                                <TableHeaderColumn dataField='profile'
+                                <TableHeaderColumn dataField='profile' dataSort
                                                    thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Profile</TableHeaderColumn>
-                                <TableHeaderColumn dataField='startYear'
+                                <TableHeaderColumn dataField='startYear' dataSort
                                                    thStyle={tabgrid.tg8} tdStyle={tabgrid.tg8}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Start year</TableHeaderColumn>

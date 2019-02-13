@@ -31,19 +31,19 @@ export default class TeachersTable extends Component {
                                             hover
                             >
                                 <TableHeaderColumn dataField='idTe' isKey hidden={true}>ID</TableHeaderColumn>
-                                <TableHeaderColumn dataField='firstname'
+                                <TableHeaderColumn dataField='firstname' dataSort
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Firstname</TableHeaderColumn>
-                                <TableHeaderColumn dataField='surname'
+                                <TableHeaderColumn dataField='surname' dataSort
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Surname</TableHeaderColumn>
-                                <TableHeaderColumn dataField='interests'
+                                <TableHeaderColumn dataField='interests' dataSort
                                                    thStyle={tabgrid.tg6} tdStyle={tabgrid.tg6}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Interests</TableHeaderColumn>
-                                <TableHeaderColumn dataField='notes'
+                                <TableHeaderColumn dataField='notes' dataSort
                                                    thStyle={tabgrid.tg10} tdStyle={tabgrid.tg10}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Notes</TableHeaderColumn>

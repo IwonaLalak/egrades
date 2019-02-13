@@ -49,11 +49,11 @@ export default class GradesTable extends Component {
                                     hover
                     >
                         <TableHeaderColumn dataField='idSt' isKey hidden={true}>ID</TableHeaderColumn>
-                        <TableHeaderColumn dataField='firstname'
+                        <TableHeaderColumn dataField='firstname' dataSort
                                            thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                            filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                         >Firstname</TableHeaderColumn>
-                        <TableHeaderColumn dataField='surname'
+                        <TableHeaderColumn dataField='surname' dataSort
                                            thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                            filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                         >Surname</TableHeaderColumn>

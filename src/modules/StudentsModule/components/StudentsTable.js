@@ -66,15 +66,15 @@ export default class StudentsTable extends Component {
                                                    dataFormat={(cell,row)=>this.renderNumber(cell,row)}
                                                    hidden={this.props.disableNumber}
                                 >No.</TableHeaderColumn>
-                                <TableHeaderColumn dataField='firstname'
+                                <TableHeaderColumn dataField='firstname' dataSort
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Firstname</TableHeaderColumn>
-                                <TableHeaderColumn dataField='surname'
+                                <TableHeaderColumn dataField='surname' dataSort
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Surname</TableHeaderColumn>
-                                <TableHeaderColumn dataField='adress'
+                                <TableHeaderColumn dataField='adress' dataSort
                                                    thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Adress</TableHeaderColumn>
@@ -84,7 +84,7 @@ export default class StudentsTable extends Component {
                                                    formatDataExtra={this.props.schoolClassesForSelect}
                                                    dataFormat={(cell,row)=>this.renderClass(cell,row)}
                                 >Class</TableHeaderColumn>
-                                <TableHeaderColumn dataField='notes'
+                                <TableHeaderColumn dataField='notes' dataSort
                                                    thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Notes</TableHeaderColumn>

@@ -42,6 +42,28 @@
 .react-bs-table-container table {
   margin-bottom: 0;
 }
+.react-bs-table-container .order .caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.react-bs-table-container .order .dropup,
+.react-bs-table-container .order .dropdown {
+  position: relative;
+}
+.react-bs-table-container .order .dropup .caret,
+.react-bs-table-container .order .navbar-fixed-bottom .dropdown .caret {
+  border-top: 0;
+  border-bottom: 4px dashed;
+  border-bottom: 4px solid \9;
+  content: "";
+}
 form {
   border: 1px solid #0a5884;
   border-radius: 5px;

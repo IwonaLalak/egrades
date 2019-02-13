@@ -31,7 +31,7 @@ export default class SubjectsTable extends Component {
                                             hover
                             >
                                 <TableHeaderColumn dataField='idSu' isKey hidden={true}>ID</TableHeaderColumn>
-                                <TableHeaderColumn dataField='name'
+                                <TableHeaderColumn dataField='name' dataSort
                                                    thStyle={tabgrid.tg22} tdStyle={tabgrid.tg22}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Subject name</TableHeaderColumn>
