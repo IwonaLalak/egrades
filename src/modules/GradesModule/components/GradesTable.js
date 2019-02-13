@@ -3,6 +3,8 @@ import {ButtonToolbar} from "reactstrap";
 import {ButtonAction, ButtonAdd, ButtonDelete, ButtonEdit} from "../../../app_components/ButtonsComponents";
 import tabgrid from "../../../app_utilities/for_components/tabgrid";
 import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table";
+import ReactTooltip from 'react-tooltip'
+import {Icon} from "../../../app_components/IconComponent";
 
 export default class GradesTable extends Component {
     constructor(props) {
@@ -30,10 +32,18 @@ export default class GradesTable extends Component {
             <div className={'gradesContainer'}>
                 {
                     cell.map(item => {
+
                         return (
                             <div className={'gradeBox'}>
+                                <div data-tip='' data-for={'tooltipGrade_' + item.idGr} data-place="bottom" className='tooltip_here' style={{cursor: 'pointer'}}>
                                 <div className={'grade'}>{item.grade}</div>
-                                <div className={'date'}>{item.date}</div>
+                                </div>
+                                <ReactTooltip id={'tooltipGrade_' + item.idGr}>
+                                    <div>
+                                        <div><label><Icon type={'calendar'}/>Date: </label>{item.date}</div>
+                                        <div><label><Icon type={'user-secret'}/>Teacher: </label>{item.teacherFirstname+' '+item.teacherSurname}</div>
+                                    </div>
+                                </ReactTooltip>
                             </div>
                         )
                     })

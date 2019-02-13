@@ -110,16 +110,22 @@ export default class GradesContainer extends Component {
                 idSu: 1,
                 grades: [
                     {
+                        idGr:1,
                         idSe: 1,
                         date: '2018-10-10',
                         grade: 4.5,
                         idTe: 1,
+                        teacherFirstname: 'Jon',
+                        teacherSurname: 'Snow',
                     },
                     {
+                        idGr:2,
                         idSe: 1,
                         date: '2019-01-23',
                         grade: 5,
                         idTe: 1,
+                        teacherFirstname: 'Jon',
+                        teacherSurname: 'Snow',
                     },
                 ]
             },
@@ -134,22 +140,31 @@ export default class GradesContainer extends Component {
                 idSu: 1,
                 grades: [
                     {
+                        idGr:3,
                         idSe: 1,
                         date: '2018-10-11',
                         grade: 3,
                         idTe: 1,
+                        teacherFirstname: 'Jon',
+                        teacherSurname: 'Snow',
                     },
                     {
+                        idGr:4,
                         idSe: 1,
                         date: '2019-02-01',
                         grade: 1,
                         idTe: 1,
+                        teacherFirstname: 'Jon',
+                        teacherSurname: 'Snow',
                     },
                     {
+                        idGr:5,
                         idSe: 1,
                         date: '2019-02-13',
                         grade: 4.5,
                         idTe: 1,
+                        teacherFirstname: 'Jon',
+                        teacherSurname: 'Snow',
                     },
                 ]
             }

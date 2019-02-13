@@ -14,9 +14,6 @@
   color: #0a5884;
   font-weight: bold;
   font-size: 16px;
-}
-#GradesTable .gradesContainer .gradeBox .date {
-  font-size: 12px;
-  color: grey;
+  min-width: 28px;
 }
 /*# sourceMappingURL=Modules.css.map */
