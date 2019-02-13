@@ -128,6 +128,7 @@ export default class StudentsContainer extends Component {
                                            handleClickDelete={(obj) => this.onClickDelete(obj)}
                                            schoolClasses={this.state.schoolClasses}
                                            schoolClassesForSelect={this.state.schoolClassesForSelect}
+                                           disableNumber={true}
 
                             />
                         </Col>

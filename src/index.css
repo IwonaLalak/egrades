@@ -10,3 +10,4 @@ body {
 @import "styles/elements.css";
 @import 'styles/LoginModule.css';
 @import "styles/NavigationComponent.css";
+@import "styles/ModalComponent.css";

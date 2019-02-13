@@ -29,7 +29,11 @@ export default class StudentsTable extends Component {
             </div>)
         }
     }
-    
+
+    renderNumber(cell,row){
+        return parseInt(this.props.data.indexOf(row))+1
+    }
+
     render() {
 
         return (
@@ -40,6 +44,11 @@ export default class StudentsTable extends Component {
                                             hover
                             >
                                 <TableHeaderColumn dataField='idSt' isKey hidden={true}>ID</TableHeaderColumn>
+                                <TableHeaderColumn dataField='idSt'
+                                                   thStyle={tabgrid.tg1} tdStyle={tabgrid.tg1}
+                                                   dataFormat={(cell,row)=>this.renderNumber(cell,row)}
+                                                   hidden={this.props.disableNumber}
+                                >No.</TableHeaderColumn>
                                 <TableHeaderColumn dataField='firstname'
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
@@ -49,7 +58,7 @@ export default class StudentsTable extends Component {
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Surname</TableHeaderColumn>
                                 <TableHeaderColumn dataField='adress'
-                                                   thStyle={tabgrid.tg6} tdStyle={tabgrid.tg6}
+                                                   thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Adress</TableHeaderColumn>
                                 <TableHeaderColumn dataField='idCl'
@@ -63,6 +72,7 @@ export default class StudentsTable extends Component {
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Notes</TableHeaderColumn>
                                 <TableHeaderColumn dataField='idSt'
+                                                   hidden={this.props.disableButtons}
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    dataFormat={(cell,row)=>this.renderButtons(cell,row)}
                                 ></TableHeaderColumn>
