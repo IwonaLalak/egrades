@@ -1,0 +1,27 @@
+@import "general";
+
+#GradesTable {
+  .gradesContainer {
+    .gradeBox{
+      display:inline-block;
+      margin-right:5px;
+      margin-bottom:5px;
+      border:1px solid #ccc;
+      border-radius:5px;
+      text-align: center;
+      padding:3px;
+      &:last-of-type{
+        margin-right:0;
+      }
+      .grade{
+        color:@primary-color;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .date{
+        font-size:12px;
+        color:grey;
+      }
+    }
+  }
+}
