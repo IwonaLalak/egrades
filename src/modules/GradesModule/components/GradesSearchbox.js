@@ -3,6 +3,7 @@ import {Col, Form, FormGroup, Label, Row} from "reactstrap";
 import {ButtonAction} from "../../../app_components/ButtonsComponents";
 import {LabelMargin, Req} from "../../../app_components/FormsSmallComponents";
 import Select from "react-select";
+import {Icon} from "../../../app_components/IconComponent";
 
 export default class GradesSearchbox extends Component {
     constructor(props) {
@@ -14,8 +15,22 @@ export default class GradesSearchbox extends Component {
         };
     }
 
+    componentDidMount() {
+        if (!this.state.semester)
+            this.setState({
+                semester: this.props.semesters.find(s => Boolean(s.isCurrent))
+            })
+    }
+
+    componentWillReceiveProps(nextprops) {
+        if (!this.state.semester)
+            this.setState({
+                semester: nextprops.semesters.find(s => Boolean(s.isCurrent))
+            })
+    }
+
     onClickSearch() {
-        if(Boolean(this.state.schoolClass) && Boolean(this.state.semester) && Boolean(this.state.subject)){
+        if (Boolean(this.state.schoolClass) && Boolean(this.state.semester) && Boolean(this.state.subject)) {
             this.props.handleClickSearch(
                 {
                     idCl: this.state.schoolClass.idCl,
@@ -24,7 +39,7 @@ export default class GradesSearchbox extends Component {
                 }
             )
         }
-        else{
+        else {
             alert('Please fill all required selects')
         }
     }
@@ -40,6 +55,14 @@ export default class GradesSearchbox extends Component {
     renderSemester(option) {
         return (<div>
             <span className={'badge badge-secondary'}>{option.name}</span> {option.dateSince + ' - ' + option.dateTo}
+            <div className={'pull-right'}>
+                {
+                    option.isCurrent ?
+                        <Icon type={'check'} style={{color: 'forestgreen'}}/>
+                        :
+                        <Icon type={'times'} style={{color: 'grey'}}/>
+                }
+            </div>
         </div>)
     }
 

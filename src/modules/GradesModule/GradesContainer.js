@@ -80,7 +80,15 @@ export default class GradesContainer extends Component {
                 idSe: 1,
                 dateSince: '2018-09-01',
                 dateTo: '2019-02-28',
-                name: '2018/2019 winter'
+                name: '2018/2019 winter',
+                isCurrent:true,
+            },
+            {
+                idSe: 2,
+                dateSince: '2018-03-01',
+                dateTo: '2019-06-30',
+                name: '2018/2019 summer',
+                isCurrent:false,
             }
         ]
         this.setState({semesters: arr})
@@ -198,6 +206,7 @@ export default class GradesContainer extends Component {
                                     }
 
                                     <GradesTable data={this.state.data}
+                                                 semester={this.state.semesters.find(s=>s.idSe === this.state.parameters.idSe)}
                                                  handleClickAddGrade={(obj)=>this.onClickAddGrade(obj)}
 
                                     />

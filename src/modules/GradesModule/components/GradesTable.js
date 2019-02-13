@@ -11,14 +11,17 @@ export default class GradesTable extends Component {
     }
 
     renderButtons(cell, row) {
-        return (
+        return (<div>
             <ButtonAdd onClick={() => {
                 this.props.handleClickAddGrade(row)
-            }} outline={true}/>
-            /*<ButtonToolbar>
-                <ButtonEdit outline={true} onClick={()=>{this.props.handleClickEdit(row)}} size={'sm'}/>
-                <ButtonDelete outline={true} onClick={()=>{this.props.handleClickDelete(row)}} size={'sm'}/>
-            </ButtonToolbar>*/
+            }} outline={true} disabled={(!this.props.semester.isCurrent)}/>
+                {
+                    !this.props.semester.isCurrent?
+                        <div style={{color:'grey', fontSize:'10px',fontStyle:'italic'}}>The archival semester has been selected - you can not write a grade.</div>
+                        :
+                        ''
+                }
+            </div>
         )
     }
 
