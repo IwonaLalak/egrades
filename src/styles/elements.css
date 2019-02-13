@@ -18,10 +18,20 @@
 .btn-warning,
 .btn-warning:disabled {
   color: #fff;
+  background: #ff7365;
+  border-color: #e6634f;
+}
+.btn-outline-warning {
+  color: #e6634f;
+  border-color: #e6634f;
 }
 .btn-warning:hover,
-.btn-outline-warning:hover {
+.btn-outline-warning:hover,
+.btn-outline-warning:active,
+.btn-outline-warning:focus {
   color: #fff;
+  background: #e6634f;
+  border-color: #cd4b3c;
 }
 .btn-toolbar .btn {
   margin-right: 5px;

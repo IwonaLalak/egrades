@@ -21,11 +21,23 @@
 
 .btn-warning, .btn-warning:disabled {
   color: #fff;
+  background: @secondary-color-lighter;
+  border-color:@secondary-color-darker
 }
 
-.btn-warning:hover, .btn-outline-warning:hover {
-  color: #fff;
+.btn-outline-warning{
+  color:@secondary-color-darker;
+  border-color:@secondary-color-darker
 }
+
+.btn-warning:hover, .btn-outline-warning:hover, .btn-outline-warning:active, .btn-outline-warning:focus {
+  color: #fff;
+
+  background: @secondary-color-darker;
+  border-color:@secondary-color-darkest
+}
+
+
 
 .btn-toolbar {
   .btn {

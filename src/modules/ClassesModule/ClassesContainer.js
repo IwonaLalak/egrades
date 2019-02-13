@@ -22,7 +22,6 @@ export default class ClassesContainer extends Component {
     }
 
     componentDidMount() {
-        // todo: popup with students in particular class
         this.loadData();
     }
 

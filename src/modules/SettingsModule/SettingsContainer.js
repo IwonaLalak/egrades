@@ -49,7 +49,7 @@ export default class SettingsContainer extends Component {
                                 <div style={{marginTop:'15px'}}>
                                 <Row>
                                     <Col sm="12">
-                                        aasasaa
+                                        Another tab's content
                                     </Col>
                                 </Row>
                                 </div>
