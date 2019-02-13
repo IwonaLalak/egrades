@@ -129,6 +129,7 @@ export default class StudentsContainer extends Component {
                                            schoolClasses={this.state.schoolClasses}
                                            schoolClassesForSelect={this.state.schoolClassesForSelect}
                                            disableNumber={true}
+                                           disableAddGradeButton={true}
 
                             />
                         </Col>

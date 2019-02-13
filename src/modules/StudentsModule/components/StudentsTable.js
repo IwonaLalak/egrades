@@ -13,10 +13,27 @@ export default class StudentsTable extends Component {
     }
 
     renderButtons(cell,row){
+
         return(
             <ButtonToolbar>
+                {
+                    (this.props.disableAddGradeButton) ?
+                        ''
+                        :
+                        <ButtonAction outline={true} onClick={()=>this.props.handleClickAddGrade(row)} label={'Add Grade'} icon={'plus'}/>
+                }
+                {
+                    (this.props.disableEditAndRemoveButtons)?
+                        ''
+                        :
                 <ButtonEdit outline={true} onClick={()=>{this.props.handleClickEdit(row)}} size={'sm'}/>
+                }
+                {
+                    (this.props.disableEditAndRemoveButtons)?
+                        ''
+                        :
                 <ButtonDelete outline={true} onClick={()=>{this.props.handleClickDelete(row)}} size={'sm'}/>
+                }
             </ButtonToolbar>
         )
     }
@@ -72,7 +89,6 @@ export default class StudentsTable extends Component {
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Notes</TableHeaderColumn>
                                 <TableHeaderColumn dataField='idSt'
-                                                   hidden={this.props.disableButtons}
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    dataFormat={(cell,row)=>this.renderButtons(cell,row)}
                                 ></TableHeaderColumn>

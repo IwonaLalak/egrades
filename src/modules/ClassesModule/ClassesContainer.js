@@ -96,6 +96,10 @@ export default class ClassesContainer extends Component {
         })
     }
 
+    onClickAddGrade(student){
+        console.log(student)
+    }
+
     render() {
 
         return (
@@ -139,7 +143,8 @@ export default class ClassesContainer extends Component {
                                     data={this.state.dataForModal[1]}
                                     schoolClasses={this.state.data}
                                     schoolClassesForSelect={this.state.schoolClassesForSelect}
-                                    disableButtons={true}
+                                    disableEditAndRemoveButtons={true}
+                                    handleClickAddGrade={(obj)=>{this.onClickAddGrade(obj)}}
 
                                 />
                             </div>
