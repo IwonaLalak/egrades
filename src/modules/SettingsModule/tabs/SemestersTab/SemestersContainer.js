@@ -3,6 +3,8 @@ import {Col, Row} from "reactstrap";
 import {ButtonAdd} from "../../../../app_components/ButtonsComponents";
 import SemestersTable from "./components/SemestersTable";
 import SemestersForm from "./components/SemestersForm";
+import SemestersService from "../../../../services/SemestersService";
+import {NotificationManager} from "react-notifications";
 
 export default class SemestersContainer extends Component {
     constructor(props) {
@@ -19,23 +21,13 @@ export default class SemestersContainer extends Component {
     }
 
     loadData() {
-        let arr = [
-            {
-                idSe: 1,
-                dateSince: '2018-09-01',
-                dateTo: '2019-02-28',
-                name: '2018/2019 winter',
-                isCurrent:true,
-            },
-            {
-                idSe: 2,
-                dateSince: '2018-03-01',
-                dateTo: '2019-06-30',
-                name: '2018/2019 summer',
-                isCurrent:false,
+        SemestersService.getAllSemesters().then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    data: response.data,
+                })
             }
-        ]
-        this.setState({data: arr})
+        })
     }
 
     onClickEdit(obj) {
@@ -43,15 +35,31 @@ export default class SemestersContainer extends Component {
     }
 
     onClickDelete(obj) {
-        // rest
+        if (window.confirm('Are you sure to delete data')) {
+            SemestersService.deleteSemester(obj.idSe).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully deleted')
+                    this.loadData()
+                }
+            })
+        }
     }
 
     onClickSave(obj, isEdition) {
-        console.log(obj)
         if (isEdition) {
-            // rest put
+            SemestersService.editSemester(obj.idSe,obj).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully edited')
+                    this.loadData()
+                }
+            })
         } else {
-            // rest post
+            SemestersService.addSemester(obj).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully added')
+                    this.loadData()
+                }
+            })
         }
 
         this.setState({showForm: false, editedObject: null})
