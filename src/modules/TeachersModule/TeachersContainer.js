@@ -4,6 +4,8 @@ import {Col, Row} from "reactstrap";
 import TeachersForm from "./components/TeachersForm";
 import {ButtonAdd} from "../../app_components/ButtonsComponents";
 import TeachersTable from "./components/TeachersTable";
+import TeachersService from "../../services/TeachersService";
+import {NotificationManager} from "react-notifications";
 
 export default class TeachersContainer extends Component {
     constructor(props) {
@@ -20,23 +22,13 @@ export default class TeachersContainer extends Component {
     }
 
     loadData() {
-        let arr = [
-            {
-                idTe: 1,
-                firstname: 'Jon',
-                surname: 'Snow',
-                interests: 'IT, Math',
-                notes:''
-            },
-            {
-                idTe: 2,
-                firstname: 'Cersei',
-                surname: 'Lannister',
-                interests: 'History, English',
-                notes:'Has vacation: 1 - 15 jan 2019'
-            },
-        ]
-        this.setState({data: arr})
+        TeachersService.getAllTeachers().then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    data: response.data,
+                })
+            }
+        })
     }
 
     onClickEdit(obj) {
@@ -44,15 +36,31 @@ export default class TeachersContainer extends Component {
     }
 
     onClickDelete(obj) {
-        // rest
+        if (window.confirm('Are you sure to delete data')) {
+            TeachersService.deleteTeacher(obj.idTe).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully deleted')
+                    this.loadData()
+                }
+            })
+        }
     }
 
     onClickSave(obj, isEdition) {
-        console.log(obj)
         if (isEdition) {
-            // rest put
+            TeachersService.editTeacher(obj.idTe,obj).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully edited')
+                    this.loadData()
+                }
+            })
         } else {
-            // rest post
+            TeachersService.addTeacher(obj).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully added')
+                    this.loadData()
+                }
+            })
         }
 
         this.setState({showForm: false, editedObject: null})
