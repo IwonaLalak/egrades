@@ -74,6 +74,16 @@
   border-bottom: 4px solid \9;
   content: "";
 }
+.react-bs-table-container .pagination .active .page-link {
+  background: #0a5884;
+  border-color: #09466b;
+}
+.react-bs-table-container .pagination .active .page-link:hover,
+.react-bs-table-container .pagination .active .page-link:focus,
+.react-bs-table-container .pagination .active .page-link:active {
+  background: #09466b;
+  border-color: #073c5a;
+}
 form {
   border: 1px solid #0a5884;
   border-radius: 5px;

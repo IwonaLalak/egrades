@@ -4,6 +4,8 @@ import SubjectsForm from "./components/SubjectsForm";
 import {ButtonAdd} from "../../app_components/ButtonsComponents";
 import {Col, Row} from "reactstrap";
 import SubjectsTable from "./components/SubjectsTable";
+import SubjectsService from "../../services/SubjectsService";
+import {NotificationManager} from "react-notifications";
 
 export default class SubjectsContainer extends Component {
     constructor(props) {
@@ -20,33 +22,13 @@ export default class SubjectsContainer extends Component {
     }
 
     loadData() {
-        let arr = [
-            {
-                idSu: 1,
-                name: 'IT',
-            },
-            {
-                idSu: 2,
-                name: 'Math',
-            },
-            {
-                idSu: 3,
-                name: 'English',
-            },
-            {
-                idSu: 4,
-                name: 'History',
-            },
-            {
-                idSu: 5,
-                name: 'Biology',
-            },
-            {
-                idSu: 6,
-                name: 'Chemistry',
-            },
-        ]
-        this.setState({data: arr})
+        SubjectsService.getAllSubjects().then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    data: response.data,
+                })
+            }
+        })
     }
 
     onClickEdit(obj) {
@@ -54,15 +36,31 @@ export default class SubjectsContainer extends Component {
     }
 
     onClickDelete(obj) {
-        // rest
+        if (window.confirm('Are you sure to delete data')) {
+            SubjectsService.deleteSubject(obj.idSu).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully deleted')
+                    this.loadData()
+                }
+            })
+        }
     }
 
     onClickSave(obj, isEdition) {
-        console.log(obj)
         if (isEdition) {
-            // rest put
+            SubjectsService.editSubject(obj.idSu,obj).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully edited')
+                    this.loadData()
+                }
+            })
         } else {
-            // rest post
+            SubjectsService.addSubject(obj).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully added')
+                    this.loadData()
+                }
+            })
         }
 
         this.setState({showForm: false, editedObject: null})

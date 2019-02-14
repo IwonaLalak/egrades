@@ -89,6 +89,19 @@
       content: "";
     }
   }
+
+  .pagination{
+    .active{
+      .page-link{
+        background: @primary-color;
+        border-color: @primary-color-darker;
+        &:hover, &:focus, &:active{
+          background: @primary-color-darker;
+          border-color: @primary-color-darkest
+        }
+      }
+    }
+  }
 }
 
 // FORMS
