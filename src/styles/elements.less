@@ -1,5 +1,7 @@
 @import "general";
 
+// BOOTSTRAP STYLES OVERWRITTEN
+
 .btn-primary, .btn-primary:disabled {
   background: @primary-color;
   border-color: @primary-color-darker
@@ -37,8 +39,6 @@
   border-color:@secondary-color-darkest
 }
 
-
-
 .btn-toolbar {
   .btn {
     margin-right: 5px;
@@ -57,6 +57,8 @@
 .badge-secondary{
   background: @secondary-color;
 }
+
+// BOOTSTRAP REACT TABLE
 
 .react-bs-table-container {
   margin-top: 15px;
@@ -88,6 +90,8 @@
     }
   }
 }
+
+// FORMS
 
 form {
   border: 1px solid @primary-color;
@@ -121,3 +125,12 @@ form {
     height: 32px
   }
 }
+
+// NOTIFICATIONS
+
+.notification-container{
+  .message{
+    word-break: break-all;
+  }
+}
+

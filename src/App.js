@@ -11,7 +11,29 @@ import StudentContainer from "./modules/StudentModule/StudentContainer";
 import SubjectsContainer from "./modules/SubjectsModule/SubjectsContainer";
 import TeachersContainer from "./modules/TeachersModule/TeachersContainer";
 import LoginService from "./services/LoginService";
+import axios from "axios";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
+
+axios.interceptors.response.use(function (response) {
+    // Do something with response data
+    return response;
+}, function (error) {
+
+    if (Boolean(error.response)) {
+        NotificationManager.error('Error code: ' + error.response.data.status + ', error: ' + error.response.data.error + ', message: ' + error.response.data.message, 'Can not make the request', 10000);
+        console.log(error.response)
+    }else{
+        console.log(error)
+        NotificationManager.error('Can not make the request - API error. Details in console.')
+    }
+
+    return Promise.reject(error);
+});
+
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 class App extends Component {
     constructor(props) {
@@ -46,6 +68,7 @@ class App extends Component {
                         <Redirect to="/"/>
                     </Switch>
                 </Router>
+                <NotificationContainer/>
             </div>
         );
     }

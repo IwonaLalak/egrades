@@ -101,4 +101,7 @@ form .form-group:first-of-type {
 form .add-label-margin {
   height: 32px;
 }
+.notification-container .message {
+  word-break: break-all;
+}
 /*# sourceMappingURL=elements.css.map */

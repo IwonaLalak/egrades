@@ -22,7 +22,6 @@ export default class StudentsForm extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         if (Boolean(this.props.editedObject)) {
             this.setEditedObj(this.props.editedObject)
         }
@@ -66,14 +65,15 @@ export default class StudentsForm extends Component {
     onClickSave() {
         let valid = true
 
-        if (!Boolean(this.state.student.firstname) || !Boolean(this.state.student.surname
-            || !Boolean(this.state.student.personalNumber) || !Boolean(this.state.schoolClass))) {
+        if (!Boolean(this.state.student.firstname) || !Boolean(this.state.student.surname) || !Boolean(this.state.student.personalNumber) || !Boolean(this.state.schoolClass)) {
             valid = false
             alert('Please fill all required inputs')
         }
 
-        if (valid)
+        if (valid){
             this.props.handleClickSave(this.state.student, Boolean(this.props.editedObject))
+        }
+
     }
 
 

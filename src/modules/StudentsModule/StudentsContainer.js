@@ -5,6 +5,9 @@ import {ButtonAdd} from "../../app_components/ButtonsComponents";
 import StudentsForm from "./components/StudentsForm";
 import StudentsTable from "./components/StudentsTable";
 import Utils from "../../app_utilities/Utils";
+import SchoolClassesService from "../../services/SchoolClassesService";
+import {NotificationManager} from "react-notifications";
+import StudentsService from "../../services/StudentsService";
 
 export default class StudentsContainer extends Component {
     constructor(props) {
@@ -13,8 +16,8 @@ export default class StudentsContainer extends Component {
             showForm: false,
             data: [],
             editedObject: null,
-            schoolClasses:[],
-            schoolClassesForSelect:[],
+            schoolClasses: [],
+            schoolClassesForSelect: [],
         };
     }
 
@@ -24,76 +27,56 @@ export default class StudentsContainer extends Component {
     }
 
     loadData() {
-        let arr = [
-            {
-                idSt: 1,
-                firstname: 'Adam',
-                surname: 'Smith',
-                personalNumber: '1212121212',
-                adress: 'Rzeszow, Poland',
-                notes: '',
-                idCl: 1,
-            },
-            {
-                idSt: 2,
-                firstname: 'Margaret',
-                surname: 'Smith',
-                personalNumber: '1333333333',
-                adress: 'Rzeszow, Poland',
-                notes: 'has hearing problems',
-                idCl: 1
-            },
-            {
-                idSt: 3,
-                firstname: 'Ron',
-                surname: 'Tyrell',
-                personalNumber: '14422233232',
-                adress: 'Krakowska 33, Rzeszow, Poland',
-                notes: '',
-                idCl: 2
-            },
-        ]
-        this.setState({data: arr})
+        StudentsService.getAllStudents().then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    data: response.data,
+                })
+            }
+        })
     }
 
-    loadSchoolClasses(){
-        let arr = [
-            {
-                idCl: 1,
-                name: '1A',
-                profile: 'Math and IT',
-                startYear: 2018,
-
-            },
-            {
-                idCl: 2,
-                name: '1B',
-                profile: 'Biology and Chemistry',
-                startYear: 2018,
-
+    loadSchoolClasses() {
+        SchoolClassesService.getAllSchoolClasses().then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    schoolClasses: response.data,
+                    schoolClassesForSelect: Utils.changeTabOfObjectsToSimpleObject(response.data, 'idCl', 'name', 'startYear', 'profile')
+                })
             }
-        ]
-
-        this.setState({
-            schoolClasses:arr,
-            schoolClassesForSelect: Utils.changeTabOfObjectsToSimpleObject(arr,'idCl','name','startYear','profile')
         })
     }
 
     onClickEdit(obj) {
-        this.setState({editedObject: obj, showForm:true})
+        this.setState({editedObject: obj, showForm: true})
     }
 
     onClickDelete(obj) {
-        // rest
+        if (window.confirm('Are you sure to delete data')) {
+            StudentsService.deleteStudent(obj.idSt).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully deleted')
+                    this.loadData()
+                }
+            })
+        }
     }
 
     onClickSave(obj, isEdition) {
-        console.log(obj)
         if (isEdition) {
-            // rest put
+            StudentsService.editStudent(obj.idSt, obj).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully edited')
+                    this.loadData()
+                }
+            })
         } else {
-            // rest post
+            StudentsService.addStudent(obj).then((response) => {
+                if (response.status < 300) {
+                    NotificationManager.success('Successfully added')
+                    this.loadData()
+                }
+            })
         }
 
         this.setState({showForm: false, editedObject: null})
