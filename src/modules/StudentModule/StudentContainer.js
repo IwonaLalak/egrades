@@ -3,6 +3,9 @@ import NavigationComponent from "../../app_components/complex/navigationComponen
 import {Col, Row} from "reactstrap";
 import StudentSearchbox from "./components/StudentSearchbox";
 import StudentGradesTable from "./components/StudentGradesTable";
+import SchoolClassesService from "../../services/SchoolClassesService";
+import SemestersService from "../../services/SemestersService";
+import GradesService from "../../services/GradesService";
 
 export default class StudentContainer extends Component {
     constructor(props) {
@@ -21,141 +24,41 @@ export default class StudentContainer extends Component {
     }
 
     getSchoolClasses(){
-        let arr = [
-            {
-                idCl: 1,
-                name: '1A',
-                profile: 'Math and IT',
-                startYear: 2018,
-
-            },
-            {
-                idCl: 2,
-                name: '1B',
-                profile: 'Biology and Chemistry',
-                startYear: 2018,
-
+        SchoolClassesService.getAllSchoolClasses().then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    schoolClasses: response.data,
+                })
             }
-        ]
-        this.setState({schoolClasses:arr})
+        })
     }
 
     getSemesters() {
-        let arr = [
-            {
-                idSe: 1,
-                dateSince: '2018-09-01',
-                dateTo: '2019-02-28',
-                name: '2018/2019 winter',
-                isCurrent:true,
-            },
-            {
-                idSe: 2,
-                dateSince: '2018-03-01',
-                dateTo: '2019-06-30',
-                name: '2018/2019 summer',
-                isCurrent:false,
+        SemestersService.getAllSemesters().then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    semesters: response.data,
+                })
             }
-        ]
-        this.setState({semesters: arr})
+        })
     }
 
     onClickSearch(parameters){
+
+
+        // todo dokończyć jak konrad api naprawi
+
         this.setState({parameters:parameters})
 
         let url = '?idSt=' + parameters.idSt + '&idSe=' + parameters.idSe
 
-        let arr = [
-            {
-                idSu: 2,
-                name: 'Math',
-                grades:[
-                    {
-                        idGr:1,
-                        idSe: 1,
-                        date: '2019-12-22',
-                        grade: 3.5,
-                        idTe: 1,
-                        teacherFirstname: 'Jon',
-                        teacherSurname: 'Snow',
-                    }
-                ]
-            },
-            {
-                idSu: 3,
-                name: 'English',
-                grades:[
-                    {
-                        idGr:2,
-                        idSe: 1,
-                        date: '2018-10-10',
-                        grade: 4,
-                        idTe: 1,
-                        teacherFirstname: 'Jon',
-                        teacherSurname: 'Snow',
-                    },
-                    {
-                        idGr:3,
-                        idSe: 1,
-                        date: '2018-10-22',
-                        grade: 4.5,
-                        idTe: 1,
-                        teacherFirstname: 'Jon',
-                        teacherSurname: 'Snow',
-                    },
-                    {
-                        idGr:4,
-                        idSe: 1,
-                        date: '2018-11-05',
-                        grade: 6,
-                        idTe: 1,
-                        teacherFirstname: 'Jon',
-                        teacherSurname: 'Snow',
-                    },
-                ]
-            },
-            {
-                idSu: 4,
-                name: 'History',
-                grades:[
-                    {
-                        idGr:5,
-                        idSe: 1,
-                        date: '2019-02-03',
-                        grade: 3.5,
-                        idTe: 1,
-                        teacherFirstname: 'Jon',
-                        teacherSurname: 'Snow',
-                    }
-                ]
-            },
-            {
-                idSu: 5,
-                name: 'Biology',
-                grades:[
-                    {
-                        idGr:6,
-                        idSe: 1,
-                        date: '2018-11-11',
-                        grade: 2.5,
-                        idTe: 2,
-                        teacherFirstname: 'Cersei',
-                        teacherSurname: 'Lannister',
-                    },
-                    {
-                        idGr:7,
-                        idSe: 1,
-                        date: '2018-12-05',
-                        grade: 1,
-                        idTe: 2,
-                        teacherFirstname: 'Cersei',
-                        teacherSurname: 'Lannister',
-                    },
-                ]
-            },
-        ]
-
-        this.setState({data:arr})
+        GradesService.getAllStudentGradesForSemester(url).then((res) => {
+            if (res.status < 300) {
+                /*this.setState({
+                    data: response.data,
+                })*/
+            }
+        })
     }
 
     render() {

@@ -4,6 +4,7 @@ import Select from "react-select";
 import {LabelMargin, Req} from "../../../app_components/FormsSmallComponents";
 import {ButtonAction} from "../../../app_components/ButtonsComponents";
 import {Icon} from "../../../app_components/IconComponent";
+import StudentsService from "../../../services/StudentsService";
 
 export default class StudentSearchbox extends Component {
     constructor(props) {
@@ -36,27 +37,13 @@ export default class StudentSearchbox extends Component {
     }
 
     getStudentsFromClass(schoolClass){
-        let arr = [
-            {
-                idSt: 1,
-                firstname: 'Adam',
-                surname: 'Smith',
-                personalNumber: '1212121212',
-                adress: 'Rzeszow, Poland',
-                notes: '',
-                idCl: 1,
-            },
-            {
-                idSt: 2,
-                firstname: 'Margaret',
-                surname: 'Smith',
-                personalNumber: '1333333333',
-                adress: 'Rzeszow, Poland',
-                notes: 'has hearing problems',
-                idCl: 1
-            },
-        ]
-        this.setState({students:arr})
+        StudentsService.getStudentsInClass(schoolClass.idCl).then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    students: response.data,
+                })
+            }
+        })
     }
 
     onClickSearch(){
