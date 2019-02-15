@@ -22,7 +22,10 @@ export default class NavigationComponent extends Component {
                     <div id={'content'}>
                         {this.props.children}
                         <div id={'footer'}>
-                            {AppConfig.APP_NAME() +' '+ AppConfig.APP_VER() +' '+ AppConfig.APP_UPDATE()} | Authors: Iwona Lalak & Konrad Krężel
+                            {AppConfig.APP_NAME() +' '+ AppConfig.APP_VER() +' '+ AppConfig.APP_UPDATE()} | Authors: {' '}
+                            <a href="https://github.com/IwonaLalak" target="_blank">Iwona Lalak</a>
+                            {' & '}
+                            <a href="https://github.com/xenos28" target="_blank">Konrad Krężel</a>
                         </div>
                     </div>
                     <div style={{clear:'both',height:'1px'}}></div>
