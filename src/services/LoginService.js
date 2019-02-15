@@ -61,7 +61,7 @@ export default {
     registerUser(data) {
         return axios({
             method: 'post',
-            url: URL + 'register',
+            url: URL + 'register?userTypeName='+data.userTypeName+'&typId='+data.typeId,
             data: JSON.stringify(data),
         })
     },

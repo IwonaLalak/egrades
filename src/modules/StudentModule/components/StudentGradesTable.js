@@ -49,6 +49,7 @@ export default class StudentGradesTable extends Component {
                     <BootstrapTable data={this.props.data}
                                     pagination
                                     hover
+
                     >
                         <TableHeaderColumn dataField='idSu' isKey hidden={true}>ID</TableHeaderColumn>
                         <TableHeaderColumn dataField='name' dataSort

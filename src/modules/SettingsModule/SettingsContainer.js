@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import NavigationComponent from "../../app_components/complex/navigationComponent/NavigationComponent";
 import {Col, Nav, NavItem, NavLink, Row, TabContent, TabPane} from "reactstrap";
 import SemestersContainer from "./tabs/SemestersTab/SemestersContainer";
+import AccessContainer from "./tabs/AccessTab/AccessContainer";
+import {Icon} from "../../app_components/IconComponent";
 
 export default class SettingsContainer extends Component {
     constructor(props) {
@@ -25,7 +27,7 @@ export default class SettingsContainer extends Component {
                                         this.setState({activeTab: '1'})
                                     }}
                                 >
-                                    Semesters
+                                    <Icon type={'list'}/> Semesters
                                 </NavLink>
                             </NavItem>
                             <NavItem>
@@ -35,7 +37,7 @@ export default class SettingsContainer extends Component {
                                         this.setState({activeTab: '2'})
                                     }}
                                 >
-                                    More tabs
+                                    <Icon type={'key'}/> Users & Access
                                 </NavLink>
                             </NavItem>
                         </Nav>
@@ -49,7 +51,7 @@ export default class SettingsContainer extends Component {
                                 <div style={{marginTop:'15px'}}>
                                 <Row>
                                     <Col sm="12">
-                                        Another tab's content
+                                        <AccessContainer/>
                                     </Col>
                                 </Row>
                                 </div>

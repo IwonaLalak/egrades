@@ -28,6 +28,7 @@ export default class LoginContainer extends Component {
             alert('Please type both login and password')
         }
         else{
+            LoginService.logOut() // clear localStorage
             LoginService.loginUser(this.state.credentials).then(response=>{
                 if(response.status<300){
                     let token = 'Basic ' + btoa(this.state.credentials.login + ':' + this.state.credentials.pass)
