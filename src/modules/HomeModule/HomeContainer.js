@@ -4,16 +4,26 @@ import {ButtonAction, ButtonAdd, ButtonCancel, ButtonClose, ButtonDelete, Button
 import LoginService from "../../services/LoginService";
 import StudentHomeComponent from "./components/StudentHomeComponent";
 import TeacherHomeComponent from "./components/TeacherHomeComponent";
+import SemestersService from "../../services/SemestersService";
 
 export default class HomeContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: LoginService.getLoggedUser()
+            user: LoginService.getLoggedUser(),
+            semesters:[]
         };
     }
 
+    componentDidMount(){
+        this.getSemesters()
+    }
 
+    getSemesters(){
+        SemestersService.getAllSemesters().then(response=>{
+            if(response.status<300) this.setState({semesters:response.data})
+        })
+    }
 
     render() {
 
@@ -22,7 +32,7 @@ export default class HomeContainer extends Component {
                     <div id={'HomeComponent'}>
                     {
                         LoginService.checkIfSTUDENT()?
-                            <StudentHomeComponent/>
+                            <StudentHomeComponent user={this.state.user} semesters={this.state.semesters}/>
                             :
                             LoginService.checkIfTEACHER()?
                                 <TeacherHomeComponent user={this.state.user}/>
