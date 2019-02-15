@@ -13,6 +13,9 @@ export default class StudentGradesTable extends Component {
     }
 
 
+    componentDidMount(){
+    }
+
     renderGrades(cell, row) {
         return (
             <div className={'gradesContainer'}>
@@ -27,7 +30,7 @@ export default class StudentGradesTable extends Component {
                                 <ReactTooltip id={'tooltipGrade_' + item.idGr}>
                                     <div>
                                         <div><label><Icon type={'calendar'}/>Date: </label>{item.date}</div>
-                                        <div><label><Icon type={'user-secret'}/>Teacher: </label>{item.teacherFirstname+' '+item.teacherSurname}</div>
+                                        <div><label><Icon type={'user-secret'}/>Teacher: </label>{item.firstname+' '+item.surname}</div>
                                     </div>
                                 </ReactTooltip>
                             </div>

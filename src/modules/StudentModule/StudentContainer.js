@@ -6,6 +6,7 @@ import StudentGradesTable from "./components/StudentGradesTable";
 import SchoolClassesService from "../../services/SchoolClassesService";
 import SemestersService from "../../services/SemestersService";
 import GradesService from "../../services/GradesService";
+import SubjectsService from "../../services/SubjectsService";
 
 export default class StudentContainer extends Component {
     constructor(props) {
@@ -52,13 +53,30 @@ export default class StudentContainer extends Component {
 
         let url = '?idSt=' + parameters.idSt + '&idSe=' + parameters.idSe
 
-        GradesService.getAllStudentGradesForSemester(url).then((res) => {
-            if (res.status < 300) {
-                /*this.setState({
-                    data: response.data,
-                })*/
+        SubjectsService.getAllSubjects().then(response=>{
+            if(response.status<300){
+                GradesService.getAllStudentGradesForSemester(url).then((res) => {
+                    if (res.status < 300) {
+                        this.setState({
+                            data:Array.from(response.data,item=>{
+
+                                let grades = []
+                                if(res.data.find(grade=>grade.idSu === item.idSu)){
+                                    grades = (res.data.find(grade=>grade.idSu === item.idSu)).grades
+                                }
+
+                                return{
+                                    ...item,
+                                    grades:grades
+                                }
+                            })
+                        })
+                    }
+                })
             }
         })
+
+
     }
 
     render() {
