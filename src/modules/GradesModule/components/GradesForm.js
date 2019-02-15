@@ -24,7 +24,8 @@ export default class GradesForm extends Component {
                 {label: '5.5', value: 5.5},
                 {label: '6.0', value: 6.0},
             ],
-            grade: null
+            grade: null,
+            gradedate: new Date().toJSON().substr(0,10)
         };
     }
 
@@ -51,16 +52,16 @@ export default class GradesForm extends Component {
     onClickSave() {
         let valid = true
 
-        if (!Boolean(this.state.grade)) {
+        if (!Boolean(this.state.grade) || !Boolean(this.state.gradedate)) {
             valid = false
-            alert('Please fill required select')
+            alert('Please fill required select and / or choose date')
         }
 
         if (valid)
             this.props.handleClickSave(
                 {
                     grade:this.state.grade.value,
-                    date:new Date().toJSON().substr(0,10),
+                    date:this.state.gradedate,
                     idTe: 1, // todo: current logged from localstorage,
                     idSt: this.props.student.idSt,
                     idSu: this.state.subject.idSu,
@@ -80,7 +81,7 @@ export default class GradesForm extends Component {
                             <Label>Subject<Req/></Label>
                             <Input disabled={true} defaultValue={(this.state.subject)? this.state.subject.name : ''} />
                         </Col>
-                        <Col xs={3}>
+                        <Col xs={2}>
                             <Label>Class<Req/></Label>
                             <Input disabled={true}
                                    defaultValue={(this.state.schoolClass)? this.state.schoolClass.name+' - '+ this.state.schoolClass.profile+', '+this.state.schoolClass.startYear: ''}/>
@@ -88,6 +89,10 @@ export default class GradesForm extends Component {
                         <Col xs={2}>
                             <Label>Student<Req/></Label>
                             <Input disabled={true} defaultValue={(this.state.student)? this.state.student.firstname+' '+this.state.student.surname : ''}/>
+                        </Col>
+                        <Col xs={2}>
+                            <Label>Date<Req/></Label>
+                            <Input type={'date'} defaultValue={new Date().toJSON().substring(0,10)} onChange={(e)=>this.setState({gradedate:e.target.value})} />
                         </Col>
                         <Col xs={2}>
                             <Label>Grade<Req/></Label>
@@ -99,7 +104,7 @@ export default class GradesForm extends Component {
                                     clearable={false}
                             />
                         </Col>
-                        <Col xs={3}>
+                        <Col xs={2}>
                             <LabelMargin/>
                             <ButtonToolbarCancelSave onClickCancel={() => {
                                 this.props.handleClickCancel()
