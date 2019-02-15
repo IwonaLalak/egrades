@@ -3,6 +3,7 @@ import {Col, Form, FormGroup, Input, Label} from "reactstrap";
 import {LabelMargin, Req} from "../../../app_components/FormsSmallComponents";
 import {ButtonToolbarCancelSave} from "../../../app_components/ButtonsComponents";
 import Select from "react-select";
+import LoginService from "../../../services/LoginService";
 
 export default class GradesForm extends Component {
     constructor(props) {
@@ -62,7 +63,7 @@ export default class GradesForm extends Component {
                 {
                     grade:this.state.grade.value,
                     date:this.state.gradedate,
-                    idTe: 1, // todo: current logged from localstorage,
+                    idTe: LoginService.getLoggedUser().typId,
                     idSt: this.props.student.idSt,
                     idSu: this.state.subject.idSu,
                     idSe:this.state.semester.idSe,

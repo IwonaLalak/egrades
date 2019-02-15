@@ -3,6 +3,7 @@ import {Button, Col, Container, Form, FormGroup, Input, InputGroup, InputGroupAd
 import AppConfig from "../../app_config/AppConfig";
 import {Icon} from "../../app_components/IconComponent";
 import {CustomButton} from "../../app_components/ButtonsComponents";
+import LoginService from "../../services/LoginService";
 
 
 export default class LoginContainer extends Component {
@@ -27,7 +28,13 @@ export default class LoginContainer extends Component {
             alert('Please type both login and password')
         }
         else{
-            // todo check login service
+            LoginService.loginUser(this.state.credentials).then(response=>{
+                if(response.status<300){
+                    let token = 'Basic ' + btoa(this.state.credentials.login + ':' + this.state.credentials.pass)
+
+                    LoginService.setUserLogged(Object.assign(response.data.user,{token: token}),token)
+                }
+            })
         }
     }
 

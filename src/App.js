@@ -35,6 +35,12 @@ axios.interceptors.response.use(function (response) {
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 
+if (LoginService.checkIfUserIsLogged()) {
+    if (LoginService.getLoggedUser().token.indexOf('Basic') > -1) {
+        axios.defaults.headers.common.Authorization = LoginService.getLoggedUser().token;
+    }
+}
+
 class App extends Component {
     constructor(props) {
         super(props);

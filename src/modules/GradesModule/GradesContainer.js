@@ -10,6 +10,7 @@ import SchoolClassesService from "../../services/SchoolClassesService";
 import GradesService from "../../services/GradesService";
 import StudentsService from "../../services/StudentsService";
 import {NotificationManager} from "react-notifications";
+import TeachersService from "../../services/TeachersService";
 
 export default class GradesContainer extends Component {
     constructor(props) {
@@ -20,6 +21,7 @@ export default class GradesContainer extends Component {
             semesters: [],
             data: [],
             students:[],
+            teachers:[],
             parameters: null, // ids of class, subject and semester
             studentForGrade:null
         };
@@ -29,6 +31,7 @@ export default class GradesContainer extends Component {
         this.getClasses()
         this.getSubjects()
         this.getSemesters()
+        this.getTeachers()
     }
 
     getClasses() {
@@ -56,6 +59,16 @@ export default class GradesContainer extends Component {
             if (response.status < 300) {
                 this.setState({
                     semesters: response.data,
+                })
+            }
+        })
+    }
+
+    getTeachers(){
+        TeachersService.getAllTeachers().then((response) => {
+            if (response.status < 300) {
+                this.setState({
+                    teachers: response.data,
                 })
             }
         })
@@ -145,6 +158,7 @@ export default class GradesContainer extends Component {
 
                                     <GradesTable data={this.state.data}
                                                  semester={this.state.semesters.find(s=>s.idSe === this.state.parameters.idSe)}
+                                                 teachers={this.state.teachers}
                                                  handleClickAddGrade={(obj)=>this.onClickAddGrade(obj)}
 
                                     />
