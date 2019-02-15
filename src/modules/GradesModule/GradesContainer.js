@@ -126,7 +126,7 @@ export default class GradesContainer extends Component {
     render() {
 
         return (
-            <NavigationComponent>
+            <NavigationComponent currentLink={this.props.match.path} history={this.props.history}>
                 <div>
                     <Row>
                         <Col xs={12}>

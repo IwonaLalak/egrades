@@ -14,7 +14,7 @@ export default class SettingsContainer extends Component {
     render() {
 
         return (
-            <NavigationComponent>
+            <NavigationComponent currentLink={this.props.match.path} history={this.props.history}>
                 <Row>
                     <Col xs={12}>
                         <Nav tabs>

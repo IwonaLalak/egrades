@@ -10,6 +10,7 @@ import Utils from "../../app_utilities/Utils";
 import SchoolClassesService from "../../services/SchoolClassesService";
 import {NotificationManager} from "react-notifications";
 import StudentsService from "../../services/StudentsService";
+import LoginService from "../../services/LoginService";
 
 export default class ClassesContainer extends Component {
     constructor(props) {
@@ -75,7 +76,7 @@ export default class ClassesContainer extends Component {
     }
 
     onClickShowStudents(obj) {
-        StudentsService.getStudentsInClass(obj.idCl).then((response)=>{
+        StudentsService.getStudentsInClass(obj.idCl).then((response) => {
             if (response.status < 300) {
                 this.setState({
                     showModal: true,
@@ -88,23 +89,26 @@ export default class ClassesContainer extends Component {
     render() {
 
         return (
-            <NavigationComponent>
+            <NavigationComponent currentLink={this.props.match.path} history={this.props.history}>
                 <div>
                     <Row>
                         <Col xs={12}>
                             {
-                                this.state.showForm ?
-                                    <ClassesForm
-                                        handleClickSave={(obj, isEdition) => this.onClickSave(obj, isEdition)}
-                                        handleClickCancel={() => {
-                                            this.setState({showForm: false, editedObject: null})
-                                        }}
-                                        editedObject={this.state.editedObject}
-                                    />
+                                LoginService.checkIfADMIN() ?
+                                    this.state.showForm ?
+                                        <ClassesForm
+                                            handleClickSave={(obj, isEdition) => this.onClickSave(obj, isEdition)}
+                                            handleClickCancel={() => {
+                                                this.setState({showForm: false, editedObject: null})
+                                            }}
+                                            editedObject={this.state.editedObject}
+                                        />
+                                        :
+                                        <div className={'pull-right'}>
+                                            <ButtonAdd onClick={() => this.setState({showForm: true})}/>
+                                        </div>
                                     :
-                                    <div className={'pull-right'}>
-                                        <ButtonAdd onClick={() => this.setState({showForm: true})}/>
-                                    </div>
+                                    ''
                             }
                         </Col>
                         <Col xs={12}>
@@ -112,6 +116,7 @@ export default class ClassesContainer extends Component {
                                           handleClickEdit={(obj) => this.onClickEdit(obj)}
                                           handleClickDelete={(obj) => this.onClickDelete(obj)}
                                           handleClickShowStudents={(obj) => this.onClickShowStudents(obj)}
+                                          hideEditAndRemoveButtons={!LoginService.checkIfADMIN()}
 
                             />
                         </Col>
@@ -130,7 +135,7 @@ export default class ClassesContainer extends Component {
                                     data={this.state.dataForModal[1]}
                                     schoolClasses={this.state.data}
                                     schoolClassesForSelect={this.state.schoolClassesForSelect}
-                                    disableEditAndRemoveButtons={true}
+                                    hideEditAndRemoveButtons={true}
 
                                 />
                             </div>

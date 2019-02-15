@@ -72,7 +72,7 @@ export default class StudentsTable extends Component {
                                                    thStyle={tabgrid.tg5} tdStyle={tabgrid.tg5}
                                                    filter={{type: 'TextFilter', delay: 500, placeholder: 'Search'}}
                                 >Notes</TableHeaderColumn>
-                                <TableHeaderColumn dataField='idSt' hidden={this.props.disableEditAndRemoveButtons}
+                                <TableHeaderColumn dataField='idSt' hidden={this.props.hideEditAndRemoveButtons}
                                                    thStyle={tabgrid.tg3} tdStyle={tabgrid.tg3}
                                                    dataFormat={(cell,row)=>this.renderButtons(cell,row)}
                                 ></TableHeaderColumn>

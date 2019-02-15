@@ -46,9 +46,6 @@ export default class StudentContainer extends Component {
 
     onClickSearch(parameters){
 
-
-        // todo dokończyć jak konrad api naprawi
-
         this.setState({parameters:parameters})
 
         let url = '?idSt=' + parameters.idSt + '&idSe=' + parameters.idSe
@@ -82,7 +79,7 @@ export default class StudentContainer extends Component {
     render() {
 
         return (
-                <NavigationComponent>
+                <NavigationComponent currentLink={this.props.match.path} history={this.props.history}>
                     <div>
                         <Row>
                             <Col xs={12}>

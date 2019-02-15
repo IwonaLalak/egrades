@@ -66,4 +66,8 @@ export default {
         })
     },
 
+    logOut(){
+        localStorage.removeItem('egrades_currentuser')
+    }
+
 }

@@ -13,15 +13,21 @@ export default class ClassesTable extends Component {
     }
 
     renderButtons(cell,row){
+        if(this.props.hideEditAndRemoveButtons){
+            return(
+                    <ButtonAction outline={true} onClick={()=>{this.props.handleClickShowStudents(row)}} size={'sm'} label={'Show students'}/>
+            )
+        }
+        else
         return(
             <ButtonToolbar>
                 <ButtonAction outline={true} onClick={()=>{this.props.handleClickShowStudents(row)}} size={'sm'} label={'Show students'}/>
-                <ButtonEdit outline={true} onClick={()=>{this.props.handleClickEdit(row)}} size={'sm'}/>
-                <ButtonDelete outline={true} onClick={()=>{this.props.handleClickDelete(row)}} size={'sm'}/>
+                <ButtonEdit outline={true} onClick={()=>{this.props.handleClickEdit(row)}} size={'sm'} />
+                <ButtonDelete outline={true} onClick={()=>{this.props.handleClickDelete(row)}} size={'sm'} />
             </ButtonToolbar>
         )
     }
-    
+
     render() {
 
         return (

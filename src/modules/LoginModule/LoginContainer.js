@@ -33,6 +33,8 @@ export default class LoginContainer extends Component {
                     let token = 'Basic ' + btoa(this.state.credentials.login + ':' + this.state.credentials.pass)
 
                     LoginService.setUserLogged(Object.assign(response.data.user,{token: token}),token)
+
+                    this.props.history.push('/')
                 }
             })
         }

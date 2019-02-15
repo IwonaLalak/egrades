@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import AppConfig from "../../../../app_config/AppConfig";
 import {Button} from "reactstrap";
 import {Icon} from "../../../IconComponent";
+import LoginService from "../../../../services/LoginService";
 
 export default class HeaderComponent extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ export default class HeaderComponent extends Component {
     }
 
     onClickLogout(){
-
+        LoginService.logOut();
+        this.props.history.push('/')
     }
 
     render() {

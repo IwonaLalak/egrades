@@ -16,7 +16,7 @@ export default class NavigationComponent extends Component {
 
         return (
             <div id={'NavigationComponent'}>
-                <HeaderComponent/>
+                <HeaderComponent history={this.props.history}/>
                 <div id={'container'}>
                     <SidebarComponent/>
                     <div id={'content'}>
