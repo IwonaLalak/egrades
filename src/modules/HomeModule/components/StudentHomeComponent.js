@@ -115,7 +115,7 @@ export default class StudentHomeComponent extends Component {
                                     clearable={false}
                             />
                         </Col>
-                        <Col lg={7}><i style={{color: 'grey'}}>Below there are your grades. To see grades from others semesters, please select
+                        <Col lg={7}><i style={{color: 'grey'}}>Below there are your grades. To see grades from other time, please chooce
                             semester</i></Col>
                     </Row>
                     <Row>

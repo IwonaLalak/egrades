@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {ButtonToolbar} from "reactstrap";
-import {ButtonAction, ButtonAdd, ButtonDelete, ButtonEdit} from "../../../app_components/ButtonsComponents";
 import tabgrid from "../../../app_utilities/for_components/tabgrid";
 import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table";
 import ReactTooltip from 'react-tooltip'
