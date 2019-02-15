@@ -13,6 +13,7 @@ export default class AppConfig{
     }
 
     static HOST_API() {
-        return 'http://10.10.10.124:8080/api/'
+     //   return 'http://10.10.10.124:8080/api/'
+        return 'http://localhost:8080/api/'
     }
 }
